@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
-import TopSection from "../components/Homepage/TopSection";
-import GallerySection from "../components/Homepage/GallerySection";
+import FAQsection from "../components//FAQpage/FAQsection";
 import Footer from "../components/Footer";
 
 
@@ -23,10 +22,12 @@ const ContentWrapper = styled.div`
 `;
 
 
+
 const HomePage: React.FC = () => (
   <PageWrapper>
     <ContentWrapper>
       <Header />
+      <FAQsection/>
     </ContentWrapper>
     <Footer />
   </PageWrapper>
