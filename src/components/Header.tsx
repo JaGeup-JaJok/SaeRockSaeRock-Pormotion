@@ -75,7 +75,12 @@ const LogoImage = styled.img`
   width: 80px;
   height: auto;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 60px; // 모바일에서 더 작게
+  }
 `;
+
 
 const HamburgerButton = styled.button`
   display: none;
