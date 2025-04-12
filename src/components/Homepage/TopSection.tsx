@@ -5,7 +5,11 @@ import MusicLogo from "../../assets/images/MusicLogo.svg"; // 로고 추가
 const Section = styled.section`
   text-align: center;
   padding: 12rem 1rem;
-  position: relative; /* MusicLogo 배치를 위한 relative 설정 */
+  position: relative;
+
+  @media (max-width: 768px) {
+    padding: 6rem 1rem;
+  }
 `;
 
 const Logo = styled.img<{ position: "top-left" | "bottom-right" }>`
@@ -39,6 +43,7 @@ const Logo = styled.img<{ position: "top-left" | "bottom-right" }>`
   }
 `;
 
+
 const Title = styled.h2<{ $isVisible: boolean }>`
   font-size: 2rem;
   font-weight: 900;
@@ -46,12 +51,17 @@ const Title = styled.h2<{ $isVisible: boolean }>`
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease-out, transform 1s ease-out;
+
   ${({ $isVisible }) =>
     $isVisible &&
     `
     opacity: 1;
     transform: translateY(0);
   `}
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Description = styled.p<{ $isVisible: boolean }>`
@@ -64,6 +74,9 @@ const Description = styled.p<{ $isVisible: boolean }>`
     `
     opacity: 1;
   `}
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const Button = styled.button`
@@ -84,6 +97,10 @@ const Button = styled.button`
 
   &:active {
     filter: brightness(0.8);
+  }
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
   }
 `;
 
