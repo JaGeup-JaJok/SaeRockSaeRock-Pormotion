@@ -4,11 +4,11 @@ import MusicLogo from "../../assets/images/MusicLogo.svg"; // 로고 추가
 
 const Section = styled.section`
   text-align: center;
-  padding: 12rem 1rem;
+  padding-bottom: 12rem;
   position: relative;
 
   @media (max-width: 768px) {
-    padding: 6rem 1rem;
+    padding-bottom: 6rem;
   }
 `;
 
@@ -21,7 +21,7 @@ const Logo = styled.img<{ position: "top-left" | "bottom-right" }>`
   ${({ position }) =>
     position === "top-left"
       ? `
-    top: 8rem;
+    top: 0rem;
     left: 6rem;
     transform: rotate(-15deg);
   `
@@ -46,7 +46,7 @@ const Logo = styled.img<{ position: "top-left" | "bottom-right" }>`
     ${({ position }) =>
     position === "top-left"
       ? `
-    top: 8rem;
+    top: 0rem;
     left: 2rem;
     transform: rotate(-15deg);
   `
@@ -130,8 +130,7 @@ const TopSection: React.FC = () => {
         if (entry.isIntersecting) {
           setIsVisible(true);
         }
-      },
-      { threshold: 0.5 }
+      }
     );
 
     if (sectionRef.current) {
