@@ -83,6 +83,7 @@ const HamburgerButton = styled.button`
   border: none;
   font-size: 2rem;
   cursor: pointer;
+  color: black;
 
   @media (max-width: 768px) {
     display: block;
@@ -92,6 +93,7 @@ const HamburgerButton = styled.button`
     z-index: 1000;
   }
 `;
+
 
 
 const Header: React.FC = () => {
