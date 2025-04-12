@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import TopSection from "../components/Homepage/TopSection";
 import GallerySection from "../components/Homepage/GallerySection";
 import Footer from "../components/Footer";
-
+import Logo2 from "../assets/images/logo2.svg"
 
 const PageWrapper = styled.div`
   display: flex;
@@ -22,11 +22,23 @@ const ContentWrapper = styled.div`
 
 `;
 
+const Logo = styled.img`
+  width: 60%;
+  height: auto;
+  margin: 2rem auto 1rem;
+  display: block;
+  background:none;
 
+  @media (max-width: 768px) {
+    width: 150px;
+    margin: 1.5rem auto;
+  }
+`;
 const HomePage: React.FC = () => (
   <PageWrapper>
     <ContentWrapper>
       <Header />
+      <Logo src={Logo2} alt="Music Logo"  />
       <TopSection />
       <GallerySection />
     </ContentWrapper>
