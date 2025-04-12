@@ -60,6 +60,13 @@ const Footer: React.FC = () => (
         >
           <Icon src={FacebookIcon} alt="Facebook" />
         </IconLink>
+         <IconLink
+          href="https://www.instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon src={InstagramIcon} alt="Instagram" />
+        </IconLink>
         <IconLink
           href="https://www.twitter.com"
           target="_blank"
@@ -67,13 +74,7 @@ const Footer: React.FC = () => (
         >
           <Icon src={TwitterIcon} alt="Twitter" />
         </IconLink>
-        <IconLink
-          href="https://www.instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon src={InstagramIcon} alt="Instagram" />
-        </IconLink>
+       
       </SocialIcons>
     </div>
     <div></div>

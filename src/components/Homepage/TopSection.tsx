@@ -41,6 +41,22 @@ const Logo = styled.img<{ position: "top-left" | "bottom-right" }>`
       transform: translateY(0);
     }
   }
+  @media (max-width: 768px) {
+    width: 60px;
+    ${({ position }) =>
+    position === "top-left"
+      ? `
+    top: 8rem;
+    left: 2rem;
+    transform: rotate(-15deg);
+  `
+      : `
+    bottom: 6rem;
+    right: 2rem;
+    transform: rotate(20deg);
+  `}
+  }
+  
 `;
 
 
