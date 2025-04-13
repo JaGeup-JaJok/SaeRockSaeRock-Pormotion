@@ -85,15 +85,21 @@ const Description = styled.p<{ $isVisible: boolean }>`
   margin-bottom: 2rem;
   opacity: 0;
   transition: opacity 1s ease-in-out 0.3s;
+  white-space: pre-line;  /* Allows line breaks based on content */
+  
   ${({ $isVisible }) =>
     $isVisible &&
     `
     opacity: 1;
   `}
+  
   @media (max-width: 768px) {
     font-size: 0.9rem;
+    line-height: 1.5;
+    white-space: normal; 
   }
 `;
+
 
 const Button = styled.button`
   background: #11366D;

@@ -30,7 +30,7 @@ const Logo = styled.img`
   width: 60%;
   height: 60vh;
   background: none;
-  margin-top: 0; // 기존 30px 제거
+  margin-top: 50px;
 
   @media (max-width: 768px) {
     width: 80%;
@@ -66,7 +66,7 @@ const HomePage: React.FC = () => {
         <TopSection />
         <GallerySection />
       </ContentWrapper>
-      <Footer />
+      {/* <Footer /> */}
     </PageWrapper>
   );
 };

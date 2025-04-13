@@ -6,6 +6,12 @@ import Phone3 from "../../assets/images/phone3.svg";
 import Phone4 from "../../assets/images/phone4.svg";
 import ArrowImg from "../../assets/images/arrow.svg";
 
+// 👉 SVG 버튼 이미지
+import LeftIcon from "../../assets/images/PrevButton.svg";
+import RightIcon from "../../assets/images/NextButton.svg";
+import StopIcon from "../../assets/images/StopButton.svg";
+import PlayIcon from "../../assets/images/StartButton.svg";
+
 const Arrow = styled.img`
   width: 30px;
   height: 30px;
@@ -51,8 +57,9 @@ const SlideItem = styled.div`
   }
 `;
 
-const SliderWrapper = styled.div`
+const SliderWrapper = styled.div<{ $index: number }>`
   display: flex;
+  transform: ${({ $index }) => `translateX(-${$index * 100}%)`};
   transition: transform 0.8s ease-in-out;
   width: 100%;
 `;
@@ -117,9 +124,35 @@ const CardText = styled.p`
   }
 `;
 
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-top: 2rem;
+`;
+
+const IconButton = styled.button`
+  width: 40px;
+  height: 40px;
+  border: none; /* ✅ border 완전 제거 */
+  background: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%; /* ✅ 버튼 크기에 딱 맞게 */
+    height: 100%;
+    object-fit: contain; /* 이미지가 왜곡되지 않도록 */
+  }
+`;
+
+
 const GallerySection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAuto, setIsAuto] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
 
@@ -146,12 +179,16 @@ const GallerySection: React.FC = () => {
     },
   ];
 
+  // Auto slider
   useEffect(() => {
+    if (!isAuto) return;
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % cards.length);
     }, 3000);
+
     return () => clearInterval(interval);
-  }, [cards.length]);
+  }, [isAuto, cards.length]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -160,18 +197,21 @@ const GallerySection: React.FC = () => {
       },
       { threshold: 0.5 }
     );
-
+  
     if (titleRef.current) {
       observer.observe(titleRef.current);
     }
-
+  
     return () => {
       if (titleRef.current) {
         observer.unobserve(titleRef.current);
       }
+      // ✅ 아무것도 반환하지 않음 (void)
     };
   }, []);
+  
 
+  // Resize handler
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -182,17 +222,24 @@ const GallerySection: React.FC = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + cards.length) % cards.length);
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % cards.length);
+  };
+
+  const handleStop = () => setIsAuto(false);
+  const handlePlay = () => setIsAuto(true);
+
   return (
     <GalleryContainer>
       <Title ref={titleRef} $isVisible={isVisible}>
         새록새록이란?
       </Title>
       <div style={{ width: "100%", overflow: "hidden" }}>
-        <SliderWrapper
-          style={{
-            transform: `translateX(-${currentIndex * 100}%)`,
-          }}
-        >
+        <SliderWrapper $index={currentIndex}>
           {cards.map((card, index) => (
             <SlideItem key={index}>
               <Card>
@@ -202,13 +249,29 @@ const GallerySection: React.FC = () => {
                   <CardText>{card.text}</CardText>
                 </CardContent>
               </Card>
-              {!isMobile && index < cards.length - 1 && (
-                <Arrow src={ArrowImg} alt="arrow" />
-              )}
             </SlideItem>
           ))}
         </SliderWrapper>
       </div>
+
+      {/* 버튼 */}
+      <ButtonGroup>
+        <IconButton onClick={handlePrev}>
+          <img src={LeftIcon} alt="Prev" />
+        </IconButton>
+        {isAuto ? (
+          <IconButton onClick={handleStop}>
+            <img src={StopIcon} alt="Stop" />
+          </IconButton>
+        ) : (
+          <IconButton onClick={handlePlay}>
+            <img src={PlayIcon} alt="Play" />
+          </IconButton>
+        )}
+        <IconButton onClick={handleNext}>
+          <img src={RightIcon} alt="Next" />
+        </IconButton>
+      </ButtonGroup>
     </GalleryContainer>
   );
 };
