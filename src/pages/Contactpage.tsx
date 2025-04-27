@@ -18,14 +18,6 @@ const ContentWrapper = styled.div`
   background: linear-gradient(to bottom, #ffffff, #D9D9D9);
 
 `;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  gap: 1rem;
-  margin-top: 20px;
-  margin-left: 20px;
-`;
-
 const Button = styled.button`
   padding: 10px 20px;
   font-size: 16px;
@@ -35,9 +27,14 @@ const Button = styled.button`
   border-radius: 20px;
   cursor: pointer;
   
-  &:hover {
-    background-color: #11366d;
-  }
+`;
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-top: 100px;
+  margin-left: 0px;
+  justify-content: center;  // Centers the buttons horizontally
+  align-items: center;      // Centers the buttons vertically
 `;
 
 const ContactPage: React.FC = () => (
@@ -57,5 +54,6 @@ const ContactPage: React.FC = () => (
 );
 
 export default ContactPage;
+
 
 

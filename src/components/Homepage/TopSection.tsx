@@ -129,7 +129,9 @@ const Button = styled.button`
 const TopSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement | null>(null);
-
+  const handleAddFriend = () => {
+    window.open("https://pf.kakao.com/_XZdwn", "_blank");
+  };
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -158,7 +160,7 @@ const TopSection: React.FC = () => {
       <Description $isVisible={isVisible}>
         나의 페스티벌을 기록하기 위한 특별한 방법, 새록새록을 통해 더 특별한 하루를 즐겨보세요
       </Description>
-      <Button>Download →</Button>
+      <Button onClick={handleAddFriend}>카카오톡 플친 추가 →</Button>
     </Section>
   );
 };

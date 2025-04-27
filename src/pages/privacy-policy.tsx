@@ -1,8 +1,29 @@
 import React from "react";
+import styled from "styled-components";
+import Header from "../components/Header";
 
+const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #ffffff, #898989);
+`;
+const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+  padding-top: 10px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  height: 100%;
+`;
 const PrivacyPolicy: React.FC = () => {
   return (
-    <div>
+    <PageWrapper>
+    <Header />
+    <Section>
       <h1>개인정보처리방침</h1>
       <section>
         <h2>제1조(목적)</h2>
@@ -148,7 +169,9 @@ const PrivacyPolicy: React.FC = () => {
         <p>제1조 본 방침은 2025.04.28부터 시행됩니다.</p>
 
       </section>
-    </div>
+    </Section>
+    </PageWrapper>
+
   );
 };
 
