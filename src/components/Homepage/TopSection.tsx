@@ -125,7 +125,15 @@ const Button = styled.button`
     padding: 0.5rem 1rem;
   }
 `;
+const FriendAddText = styled.p`
+  font-size: 0.7rem;
+  color: #11366D;
+  margin-bottom: 0.5rem;
 
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+  }
+`;
 const TopSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -160,8 +168,11 @@ const TopSection: React.FC = () => {
       <Description $isVisible={isVisible}>
         나의 페스티벌을 기록하기 위한 특별한 방법, 새록새록을 통해 더 특별한 하루를 즐겨보세요
       </Description>
-      <Button onClick={handleAddFriend}>카카오톡 플친 추가 →</Button>
-    </Section>
+      
+      <Button onClick={handleAddFriend}>카카오톡 채널 추가하기 →</Button>
+    <FriendAddText>
+        친구 추가하면 출시 알림을 받을 수 있어요!
+      </FriendAddText></Section>
   );
 };
 

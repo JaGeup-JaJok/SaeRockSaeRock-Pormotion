@@ -6,7 +6,6 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(to bottom, #ffffff, #898989);
 `;
 const Section = styled.section`
   display: flex;
@@ -153,7 +152,7 @@ const PrivacyPolicy: React.FC = () => {
           가. 개인정보 보호 책임자  
           1) 성명: 박채현  
           2) 직책: 개인정보 보호 책임자  
-          3) 이메일: saerocksaerock@gmail.com
+          3) 이메일: saerocksaelog@gmail.com
         </p>
 
         <h2>제20조(권익침해에 대한 구제방법)</h2>
