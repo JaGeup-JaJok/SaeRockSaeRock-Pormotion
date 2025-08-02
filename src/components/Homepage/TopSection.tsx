@@ -171,7 +171,7 @@ const TopSection: React.FC = () => {
       
       <Button onClick={handleAddFriend}>Android 다운받기 →</Button>
     <FriendAddText>
-        친구 추가하면 출시 알림을 받을 수 있어요!
+        ios도 빠른 시일 내에 출시할게요!
       </FriendAddText></Section>
   );
 };
