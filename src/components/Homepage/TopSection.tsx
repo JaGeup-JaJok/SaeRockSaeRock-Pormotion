@@ -134,11 +134,49 @@ const FriendAddText = styled.p`
     font-size: 0.7rem;
   }
 `;
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 16px; /* 버튼 사이 간격 */
+`;
+
+const DownloadButton = styled.button`
+  width: 175px;
+  height: 48px;
+  font-size: 16px;
+  cursor: pointer;
+
+  background: #11366D;
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, filter 0.2s ease-out;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(17, 54, 109, 0.3);
+  }
+
+  &:active {
+    filter: brightness(0.8);
+  }
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+`;
 const TopSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const handleAddFriend = () => {
+  const handleAndroid = () => {
     window.open("https://play.google.com/store/apps/details?id=com.jageup.saerocksaerock", "_blank");
+  };
+  const handleiOS = () => {
+    window.open("https://apps.apple.com/kr/app/%EC%83%88%EB%A1%9D%EC%83%88%EB%A1%9D-saerocksaelog/id6744578235", "_blank");
   };
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -169,10 +207,11 @@ const TopSection: React.FC = () => {
         나의 페스티벌을 기록하기 위한 특별한 방법, 새록새록을 통해 더 특별한 하루를 즐겨보세요
       </Description>
       
-      <Button onClick={handleAddFriend}>Android 다운받기 →</Button>
-    <FriendAddText>
-        ios도 빠른 시일 내에 출시할게요!
-      </FriendAddText></Section>
+      <ButtonWrapper>
+        <DownloadButton onClick={handleAndroid}>Android 다운받기</DownloadButton>
+        <DownloadButton onClick={handleiOS}>iOS 다운받기</DownloadButton>
+      </ButtonWrapper>
+    </Section>
   );
 };
 
